@@ -19,13 +19,14 @@
     "flow": "flow",
     "flow-typed": "flow-typed install",
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.development",
-    "postinstall": "concurrently \"install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
+    "postinstall": "electron-rebuild concurrently \"install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
     "dev": "npm run hot-server -- --start-hot",
     "package": "npm run build && build --publish never",
     "package-win": "npm run build && build --win --x64",
     "package-linux": "npm run build && build --linux",
     "package-all": "npm run build && build -mwl",
-    "cleanup": "mop -v"
+    "cleanup": "mop -v",
+    "add-cors": "add-cors-to-couchdb"
   },
   "browserslist": "electron 1.4",
   "build": {
@@ -138,6 +139,7 @@
     "electron": "^1.4.15",
     "electron-builder": "^13.3.2",
     "electron-devtools-installer": "^2.0.1",
+    "electron-rebuild": "^1.5.7",
     "enzyme": "^2.7.1",
     "eslint": "^3.14.0",
     "eslint-config-airbnb": "^14.0.0",
@@ -178,8 +180,12 @@
     "webpack-validator": "^2.3.0"
   },
   "dependencies": {
+    "add-cors-to-couchdb": "^0.0.6",
+    "dotenv": "^4.0.0",
     "electron-debug": "^1.1.0",
     "font-awesome": "^4.7.0",
+    "pouchdb": "^6.1.2",
+    "pouchdb-find": "^0.10.5",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
