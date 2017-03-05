@@ -2050,6 +2050,10 @@ compare-version@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/compare-version/-/compare-version-0.1.2.tgz#0162ec2d9351f5ddd59a9202cba935366a725080"
 
+compose-class@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/compose-class/-/compose-class-1.0.2.tgz#9fa2942d3357662264d10d27ba7e09ca21114c71"
+
 compress-commons@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/compress-commons/-/compress-commons-1.1.0.tgz#9f4460bb1288564c7473916e0298aa3c320dcadb"
@@ -2587,6 +2591,16 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
+disposable-decorator@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/disposable-decorator/-/disposable-decorator-1.0.1.tgz#4dd343a30ee851e1a6f575ad0afb78f33bf0f332"
+
+disposable-mixin@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/disposable-mixin/-/disposable-mixin-1.0.1.tgz#09ea1992a898dffa7b31581c0e6ea42b27785508"
+  dependencies:
+    es6-symbol "^3.1.0"
+
 doctrine@1.5.0, doctrine@^1.2.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
@@ -2796,6 +2810,21 @@ electron-download@^3.0.1, electron-download@^3.1.0:
     semver "^5.3.0"
     sumchecker "^1.2.0"
 
+electron-ipc-socket@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/electron-ipc-socket/-/electron-ipc-socket-1.2.4.tgz#51fdbfb7cd41122f2385bc2535aaa71892226dfe"
+  dependencies:
+    compose-class "^1.0.0"
+    disposable-decorator "^1.0.0"
+    disposable-mixin "^1.0.0"
+    es6-symbol "^3.1.0"
+    is-arguments "^1.0.2"
+    is-error "^2.2.1"
+    is-function "^1.0.1"
+    is-nil "^1.0.1"
+    is-object "^1.0.1"
+    uuid "^2.0.3"
+
 electron-is-dev@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-0.1.2.tgz#8a1043e32b3a1da1c3f553dce28ce764246167e3"
@@ -3001,7 +3030,7 @@ es6-set@~0.1.3:
     es6-symbol "3"
     event-emitter "~0.3.4"
 
-es6-symbol@3, es6-symbol@^3.0.2, es6-symbol@~3.1, es6-symbol@~3.1.0:
+es6-symbol@3, es6-symbol@^3.0.2, es6-symbol@^3.1.0, es6-symbol@~3.1, es6-symbol@~3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/es6-symbol/-/es6-symbol-3.1.0.tgz#94481c655e7a7cad82eba832d97d5433496d7ffa"
   dependencies:
@@ -4373,6 +4402,10 @@ is-absolute@^0.2.3:
     is-relative "^0.2.1"
     is-windows "^0.2.0"
 
+is-arguments@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-arguments/-/is-arguments-1.0.2.tgz#07e30ad79531844179b642d2d8399435182c8727"
+
 is-array-buffer-x@^1.0.13:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/is-array-buffer-x/-/is-array-buffer-x-1.0.13.tgz#d31d8185545bd42f0944303ea4404bc560cec0b2"
@@ -4429,6 +4462,10 @@ is-equal-shallow@^0.1.3:
   dependencies:
     is-primitive "^2.0.0"
 
+is-error@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/is-error/-/is-error-2.2.1.tgz#684a96d84076577c98f4cdb40c6d26a5123bf19c"
+
 is-extendable@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/is-extendable/-/is-extendable-0.1.1.tgz#62b110e289a471418e3ec36a617d472e301dfc89"
@@ -4461,6 +4498,10 @@ is-function-x@^1.0.6:
     is-primitive "^2.0.0"
     to-string-tag-x "^1.1.0"
 
+is-function@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-function/-/is-function-1.0.1.tgz#12cfb98b65b57dd3d193a3121f5f6e2f437602b5"
+
 is-glob@^2.0.0, is-glob@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-2.0.1.tgz#d096f926a3ded5600f3fdfd91198cb0888c2d863"
@@ -4475,6 +4516,10 @@ is-my-json-valid@^2.10.0, is-my-json-valid@^2.12.0, is-my-json-valid@^2.12.4:
     generate-object-property "^1.1.0"
     jsonpointer "^4.0.0"
     xtend "^4.0.0"
+
+is-nil@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-nil/-/is-nil-1.0.1.tgz#2daba29e0b585063875e7b539d071f5b15937969"
 
 is-npm@^1.0.0:
   version "1.0.0"
@@ -4496,6 +4541,10 @@ is-object-like-x@^1.0.11:
   dependencies:
     is-function-x "^1.0.6"
     is-primitive "^2.0.0"
+
+is-object@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-object/-/is-object-1.0.1.tgz#8952688c5ec2ffd6b03ecc85e769e02903083470"
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
