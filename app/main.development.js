@@ -1,4 +1,44 @@
 import { app, BrowserWindow, Menu, shell } from 'electron';
+import dotenv from 'dotenv';
+import PouchDB from 'pouchdb';
+dotenv.config();
+
+const env = process.env
+// Add pouchdb-find plugin for Mongo inspired queries
+PouchDB.plugin(require('pouchdb-find'));
+
+const localDB = new PouchDB('app/data');
+
+// Remote CouchDB
+if(env.COUCH_HOST && env.COUCH_PORT) {
+  const remoteDB = new PouchDB(`${env.COUCH_PROTOCOL}://${env.COUCH_HOST}:${env.COUCH_PORT}/${env.COUCH_DB}`, {
+    auth: {
+      username: env.COUCH_USERNAME,
+      password: env.COUCH_PASSWORD
+    }
+  })
+
+  // Sync local database with remote
+  localDB.sync(remoteDB, { live: true, retry: true })
+  .on('change', function(change) {
+    // Something changed. Do something.
+  })
+  .on('paused', function(info) {
+    // Replication was paused, usually because of a lost connection.
+  })
+  .on('active', function(info) {
+    // Replication was resumed
+  })
+  .on('denied', function(err){
+    // A document failed to replicate (usually permissions error)
+  })
+  .on('complete', function() {
+    // Complete
+  })
+  .on('error', function(err) {
+    // Something bad has happened
+  });
+}
 
 let menu;
 let template;
