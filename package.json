@@ -183,6 +183,7 @@
     "add-cors-to-couchdb": "^0.0.6",
     "dotenv": "^4.0.0",
     "electron-debug": "^1.1.0",
+    "electron-ipc-socket": "^1.2.4",
     "font-awesome": "^4.7.0",
     "pouchdb": "^6.1.2",
     "pouchdb-find": "^0.10.5",
