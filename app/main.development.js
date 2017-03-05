@@ -1,44 +1,54 @@
-import { app, BrowserWindow, Menu, shell } from 'electron';
+import { app, ipcMain, BrowserWindow, Menu, shell } from 'electron';
+import { Socket, Transport } from 'electron-ipc-socket';
 import dotenv from 'dotenv';
 import PouchDB from 'pouchdb';
+
 dotenv.config();
 
-const env = process.env
+const env = process.env;
 // Add pouchdb-find plugin for Mongo inspired queries
 PouchDB.plugin(require('pouchdb-find'));
 
 const localDB = new PouchDB('app/data');
 
 // Remote CouchDB
-if(env.COUCH_HOST && env.COUCH_PORT) {
+if (env.COUCH_HOST && env.COUCH_PORT) {
   const remoteDB = new PouchDB(`${env.COUCH_PROTOCOL}://${env.COUCH_HOST}:${env.COUCH_PORT}/${env.COUCH_DB}`, {
     auth: {
       username: env.COUCH_USERNAME,
-      password: env.COUCH_PASSWORD
+      password: env.COUCH_PASSWORD,
     }
-  })
+  });
 
   // Sync local database with remote
   localDB.sync(remoteDB, { live: true, retry: true })
-  .on('change', function(change) {
+  .on('change', (change) => {
+    console.log(change);
     // Something changed. Do something.
   })
-  .on('paused', function(info) {
+  .on('paused', (info) => {
+    console.log(info);
     // Replication was paused, usually because of a lost connection.
   })
-  .on('active', function(info) {
+  .on('active', (info) => {
+    console.log(info);
     // Replication was resumed
   })
-  .on('denied', function(err){
+  .on('denied', (err) => {
+    console.log('error');
+    console.log(err);
     // A document failed to replicate (usually permissions error)
   })
-  .on('complete', function() {
+  .on('complete', () => {
+    console.log('Completed');
     // Complete
   })
-  .on('error', function(err) {
+  .on('error', (err) => {
+    console.log(err);
     // Something bad has happened
   });
 }
+
 
 let menu;
 let template;
@@ -95,6 +105,13 @@ app.on('ready', async () => {
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show();
     mainWindow.focus();
+  });
+
+  const socket = Socket('etainer-main', Transport(ipcMain, mainWindow));
+  socket.open();
+
+  socket.on('event:ready', () => {
+    console.log('message from rendering process');
   });
 
   mainWindow.on('closed', () => {
