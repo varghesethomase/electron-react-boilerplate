@@ -1,5 +1,4 @@
 import { app, ipcMain, BrowserWindow, Menu, shell } from 'electron';
-import { Socket, Transport } from 'electron-ipc-socket';
 import dotenv from 'dotenv';
 import PouchDB from 'pouchdb';
 
@@ -105,13 +104,6 @@ app.on('ready', async () => {
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show();
     mainWindow.focus();
-  });
-
-  const socket = Socket('etainer-main', Transport(ipcMain, mainWindow));
-  socket.open();
-
-  socket.on('event:ready', () => {
-    console.log('message from rendering process');
   });
 
   mainWindow.on('closed', () => {
@@ -331,4 +323,8 @@ app.on('ready', async () => {
     menu = Menu.buildFromTemplate(template);
     mainWindow.setMenu(menu);
   }
+  ipcMain.on('ping', (event, ...args) => {
+    console.log('Ping', ...args);
+    event.sender.send('pong', ...args);
+  });
 });
