@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import createIpc, { send } from 'redux-electron-ipc';
 import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
 import { routerMiddleware, push } from 'react-router-redux';
