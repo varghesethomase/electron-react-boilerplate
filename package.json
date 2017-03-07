@@ -136,7 +136,6 @@
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "devtron": "^1.4.0",
-    "electron": "^1.4.15",
     "electron-builder": "^13.3.2",
     "electron-devtools-installer": "^2.0.1",
     "electron-rebuild": "^1.5.7",
@@ -182,6 +181,7 @@
   "dependencies": {
     "add-cors-to-couchdb": "^0.0.6",
     "dotenv": "^4.0.0",
+    "electron": "^1.6.1",
     "electron-debug": "^1.1.0",
     "electron-ipc-socket": "^1.2.4",
     "font-awesome": "^4.7.0",
