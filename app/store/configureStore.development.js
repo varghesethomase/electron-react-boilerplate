@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import createIpc, { send } from 'redux-electron-ipc';
+import { send } from 'redux-electron-ipc';
 import thunk from 'redux-thunk';
 import { hashHistory } from 'react-router';
 import { routerMiddleware, push } from 'react-router-redux';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
-import * as counterActions from '../actions/counter';
+import * as counterActions from '../actions';
 import type { counterStateType } from '../reducers/counter';
 
 const actionCreators = {
